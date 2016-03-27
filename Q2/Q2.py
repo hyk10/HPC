@@ -36,15 +36,6 @@ varMidval_n = []
 for x in varMidval:
     varMidval_n.append(yaml.load(x)) 
 
-#importing dt,dx,rmse from c++ output txt file
-text_file = open("dtdx.txt", "r")
-varDxDt = text_file.read().split(',')
-text_file.close()
-#changing string to float format
-dt = yaml.load(varDxDt[0])
-dx = yaml.load(varDxDt[1])
-rmse = yaml.load(varDxDt[2])
-
 #plotting Mid Value($U_{0.5L}$) v.s. Time
 plt.plot(varTime_n,varMidval_n)
 plt.title(r'Mid Value($U_{0.5L}$) v.s. Time')

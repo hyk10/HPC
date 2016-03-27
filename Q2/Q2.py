@@ -11,7 +11,7 @@ import yaml
 L_d = '1.0'
 N_x_i = '20'
 T_d = '5.0'
-N_t_d = '50.0'
+N_t_d = '5000.0'
 alpha_d = '1.0'
 
 #complie and running c++ code
@@ -45,11 +45,9 @@ dt = yaml.load(varDxDt[0])
 dx = yaml.load(varDxDt[1])
 rmse = yaml.load(varDxDt[2])
 
+#plotting Mid Value($U_{0.5L}$) v.s. Time
 plt.plot(varTime_n,varMidval_n)
-#axes.plt.show()
 plt.title(r'Mid Value($U_{0.5L}$) v.s. Time')
 plt.ylabel(r'Mid Value($U_{0.5L}$)')
 plt.xlabel(r'Time(sec)')
 plt.show()
-
-plt.savefig("Q2_2.png",dpi=200)

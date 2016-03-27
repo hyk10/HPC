@@ -36,7 +36,7 @@
 	<cstring>
 	"TriMatrix.h"
 
-1459017151 source:/home/hyk10/homedir/desktop/HPC/Coursework/Q2/main.cpp
+1459102449 source:/home/hyk10/homedir/desktop/HPC/Coursework/Q2/main.cpp
 	"TriMatrix.h"
 	<iostream>
 	<iomanip>
@@ -45,10 +45,10 @@
 	<cmath>
 	<fstream>
 
-1459007569 /home/hyk10/homedir/desktop/HPC/Coursework/Q2/TriMatrix.h
+1459085028 /home/hyk10/homedir/desktop/HPC/Coursework/Q2/TriMatrix.h
 	<vector>
 
-1458896809 source:/home/hyk10/homedir/desktop/HPC/Coursework/Q2/TriMatrix.cpp
+1459085030 source:/home/hyk10/homedir/desktop/HPC/Coursework/Q2/TriMatrix.cpp
 	<iostream>
 	<iomanip>
 	<cstring>

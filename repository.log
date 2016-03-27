@@ -1,3 +1,87 @@
+commit 9156ce596e4d2842ae4957f7521d8cdc8d3ebac6
+Author: hyk10 <hong.kim10@imperial.ac.uk>
+Date:   Sun Mar 27 15:54:59 2016 +0100
+
+    Clarified codes for Q3,4,5. failed debugging Q4 Q5
+
+M	Q2/Q2.layout
+M	Q3/Q3.layout
+M	Q3/TriMatrix.cpp
+M	Q3/TriMatrix.h
+M	Q3/main.cpp
+A	Q4/Q4.PNG
+M	Q4/Q4.depend
+M	Q4/Q4.layout
+M	Q4/TriMatrix.cpp
+M	Q4/TriMatrix.h
+M	Q4/bin/Debug/Q4
+M	Q4/main.cpp
+M	Q4/obj/Debug/TriMatrix.o
+M	Q4/obj/Debug/main.o
+M	Q5/Q5.layout
+M	Q5/TriMatrix.cpp
+M	Q5/TriMatrix.h
+A	Q5/a
+A	Q5/error.txt
+M	Q5/main.cpp
+
+commit efb02846417a7d1c0fafc75a7f07988bf84c3ac8
+Author: hyk10 <hong.kim10@imperial.ac.uk>
+Date:   Sun Mar 27 15:13:14 2016 +0100
+
+    failed debugging rmse python plotting tools for Q2 and Q3
+
+M	Q2/Q2.py
+A	Q2/Q2_2.py
+M	Q2/TriMatrix.h.gch
+M	Q2/a.out
+M	Q3/Q3.py
+
+commit 42c1a19f8e016b7f8b7a697549af14e9c9030917
+Author: hyk10 <hong.kim10@imperial.ac.uk>
+Date:   Sun Mar 27 14:51:46 2016 +0100
+
+    more works to plotting tools
+
+M	Q2/Q2.py
+M	Q2/Q2_2.png
+
+commit 84111ac241230221d7e4dfdf14d44835817681ad
+Author: hyk10 <hong.kim10@imperial.ac.uk>
+Date:   Sun Mar 27 14:26:03 2016 +0100
+
+    Commenting C++ codes and python codes for Q2
+
+M	Q2/Nx_2.txt
+M	Q2/Q2.py
+A	Q2/Q2_2.png
+M	Q2/TriMatrix.cpp
+M	Q2/TriMatrix.h
+M	Q2/TriMatrix.h.gch
+M	Q2/a.out
+M	Q2/bin/Debug/Q2
+M	Q2/dtdx.csv
+M	Q2/main.cpp
+M	Q2/obj/Debug/main.o
+M	Q2/refT.txt
+M	Q4/Q4.depend
+M	Q4/TriMatrix.cpp
+A	Q4/TriMatrix.h.gch
+A	Q4/a.out
+M	Q4/bin/Debug/Q4
+M	Q4/main.cpp
+M	Q4/obj/Debug/TriMatrix.o
+M	Q4/obj/Debug/main.o
+A	repository.log
+
+commit b75cc370cb8322f3f365de9630034275d1b449e6
+Author: hyk10 <hong.kim10@imperial.ac.uk>
+Date:   Sun Mar 27 11:52:19 2016 +0100
+
+    Python plotting tool for Q3
+
+A	Q3/Q3.py
+
 commit ed346bf4b655e1f4289ee0535d9b42cb3919ba92
 Author: hyk10 <hong.kim10@imperial.ac.uk>
 Date:   Sun Mar 27 11:45:11 2016 +0100

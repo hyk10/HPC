@@ -36,9 +36,26 @@ for i in range(int(math.ceil(random.uniform(1.0, 1000.0)))):
     rmse.append(yaml.load(varDxDt[2]))
 
 #plotting RMSE v.s dt and dx
-plt.scatter(dt,dx,rmse)
-plt.title(r'RMSE v.s dt and dx')
-plt.xlabel(r'dt(sec)')
-plt.ylabel(r'dx, unit length')
-plt.zlabel(r'Root Mean Square Error')
+plt.scatter(dx,rmse)
+plt.title(r'RMSE v.s dx')
+plt.xlabel(r'dx, unit length')
+plt.ylabel(r'Root Mean Square Error')
 plt.show()
+
+plt.scatter(dt,rmse)
+plt.title(r'RMSE v.s dt')
+plt.xlabel(r'dt(sec)')
+plt.ylabel(r'Root Mean Square Error')
+plt.show()
+
+#p = subprocess.Popen('./a.out', stdin=subprocess.PIPE)
+#p.communicate(os.linesep.join([L_d, N_x_i, T_d, N_t_d, alpha_d]))
+# ERROR occurs as the expected type is bytes not string
+# however, when switched to ints and converted to bytes, cannot use p.communicate() due to the fact that it can only be called once
+
+#using stdin.write does not behave as desired either, as it does not input the values to the program invoked - p 
+#p.stdin.write(bytes(L_d))
+#p.stdin.write(bytes(N_x_i))
+#p.stdin.write(bytes(T_d))
+#p.stdin.write(bytes(N_t_d))
+#p.stdin.write(bytes(alpha_d))

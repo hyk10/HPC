@@ -36,9 +36,14 @@ for i in range(int(math.ceil(random.uniform(1.0, 1000.0)))):
     rmse.append(yaml.load(varDxDt[2]))
 
 #plotting RMSE v.s dt and dx
-plt.scatter(dt,dx,rmse)
-plt.title(r'RMSE v.s dt and dx')
+plt.scatter(dx,rmse)
+plt.title(r'RMSE v.s dx')
+plt.xlabel(r'dx, unit length')
+plt.ylabel(r'Root Mean Square Error')
+plt.show()
+
+plt.scatter(dt,rmse)
+plt.title(r'RMSE v.s dt')
 plt.xlabel(r'dt(sec)')
-plt.ylabel(r'dx, unit length')
-plt.zlabel(r'Root Mean Square Error')
+plt.ylabel(r'Root Mean Square Error')
 plt.show()

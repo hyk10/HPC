@@ -7,6 +7,7 @@ Created on Sat Mar 26 16:16:03 2016
 import matplotlib.pyplot as plt
 import subprocess
 import yaml 
+import time
 
 L_d = '1.0'
 N_x_i = '20'
@@ -17,7 +18,9 @@ alpha_d = '1.0'
 #complie and running c++ code
 args = ['g++ main.cpp TriMatrix.cpp TriMatrix.h', './a.out', L_d , N_x_i, T_d, N_t_d, alpha_d]
 subprocess.call (args, shell=True)
-
+print('hello')
+time.sleep(50)
+print('awake')
 #importing time from c++ output txt file
 text_file = open("refT.txt", "r")
 varTime = text_file.read().split(',')

@@ -1,0 +1,73 @@
+commit ed346bf4b655e1f4289ee0535d9b42cb3919ba92
+Author: hyk10 <hong.kim10@imperial.ac.uk>
+Date:   Sun Mar 27 11:45:11 2016 +0100
+
+    Debugging Q3 complete
+
+M	Q3/main.cpp
+
+commit 81d5c785649c6d95845929c8dd83940a1b2a48d7
+Author: hyk10 <hong.kim10@imperial.ac.uk>
+Date:   Sun Mar 27 11:40:28 2016 +0100
+
+    Adding progress so far to repository
+
+A	Q1/Q1.cbp
+A	Q1/Q1.depend
+A	Q1/Q1.layout
+A	Q1/TriMatrix.cpp
+A	Q1/TriMatrix.h
+A	Q1/bin/Debug/Q1
+A	Q1/bin/Debug/Q1.exe
+A	Q1/main.cpp
+A	Q1/obj/Debug/TriMatrix.o
+A	Q1/obj/Debug/main.o
+A	Q2/Nx_2.txt
+A	Q2/Q2.cbp
+A	Q2/Q2.depend
+A	Q2/Q2.exe
+A	Q2/Q2.layout
+A	Q2/Q2.py
+A	Q2/TriMatrix.cpp
+A	Q2/TriMatrix.h
+A	Q2/TriMatrix.h.gch
+A	Q2/a.out
+A	Q2/bin/Debug/Q2
+A	Q2/bin/Debug/Q2.exe
+A	Q2/data.csv
+A	Q2/dtdx.csv
+A	Q2/dtdx.txt
+A	Q2/hello
+A	Q2/main.cpp
+A	Q2/obj/Debug/TriMatrix.o
+A	Q2/obj/Debug/main.o
+A	Q2/refT.txt
+A	Q3/Q3.cbp
+A	Q3/Q3.depend
+A	Q3/Q3.layout
+A	Q3/TriMatrix.cpp
+A	Q3/TriMatrix.h
+A	Q3/a.out
+A	Q3/bin/Debug/Q3
+A	Q3/bin/Debug/Q3.exe
+A	Q3/dtdx.txt
+A	Q3/main.cpp
+A	Q3/obj/Debug/TriMatrix.o
+A	Q3/obj/Debug/main.o
+A	Q4/Q4.cbp
+A	Q4/Q4.depend
+A	Q4/Q4.layout
+A	Q4/TriMatrix.cpp
+A	Q4/TriMatrix.h
+A	Q4/bin/Debug/Q4
+A	Q4/main.cpp
+A	Q4/obj/Debug/TriMatrix.o
+A	Q4/obj/Debug/main.o
+A	Q5/Q5
+A	Q5/Q5.cbp
+A	Q5/Q5.layout
+A	Q5/TriMatrix.cpp
+A	Q5/TriMatrix.h
+A	Q5/main.cpp
+A	Q5/obj/Debug/TriMtrix.o
+A	Q5/obj/Debug/main.o

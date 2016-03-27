@@ -10,7 +10,7 @@ class TriMatrix
 
         ~TriMatrix(); //destructor
 
-        //overloaded function
+        //overloaded function to return value of row i, column j
         double& operator()(unsigned int i, unsigned int j);
 
         //function which operates matrix multiplication
@@ -19,10 +19,10 @@ class TriMatrix
 
 
     private:
-        double* mDiag;//mSize]; // diagonal value
-        double* mUpper;//mSize-1]; // upper value
-        double* mLower;//mSize-1]; // lower value
-        double* U_h;
+        double* mDiag;// diagonal value
+        double* mUpper;// upper value
+        double* mLower;// lower value
+        double* U_h;// calculated U
 
 };
 

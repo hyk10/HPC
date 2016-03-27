@@ -1,10 +1,11 @@
 #include <iostream>
 #include <iomanip>
 #include <cstring>
-
+//#include <lapack>
 using namespace std;
 
 #include "TriMatrix.h"
+
 
 #define F77NAME(x) x##_
 extern "C" {
@@ -77,8 +78,18 @@ TriMatrix::TriMatrix(double nu, double theta, int mSize) //constructor
     //pre LU decomposition
     int* Piv = new int[mSize];
     int info;
-    F77NAME(dgetrf)(&mSize, &mSize, LHS_t, &mSize, Piv, info);
+/*
+    void F77NAME(dgetrf)(const int* M, const int* N, double* A,
+                const int* lda, int* Piv, int info);
+*/
+    const int* mSize_t = &mSize;
+    cout << mSize << endl;
+    cout << LHS_t << endl;
+    cout << Piv << endl;
+    cout << info << endl;
 
+    F77NAME(dgetrf)(mSize_t, mSize_t, LHS_t, mSize_t, Piv, info);
+    cout << 1<< endl;
     //setting variables to private class
     this -> LHS = LHS_t;
 
@@ -96,7 +107,7 @@ TriMatrix::TriMatrix(double nu, double theta, int mSize) //constructor
 
     upper[0]=0;
     lower[mSize-1] =0;
-
+    cout << 2<< endl;
     for (int i = 1; i < (mSize-1); i++)
     {
         diag[i] = identity - (1 - theta) * d_nu;
@@ -124,7 +135,7 @@ TriMatrix::TriMatrix(double nu, double theta, int mSize) //constructor
             RHS_t[i]=0;
         }
     }
-
+    cout << 3<< endl;
     //setting variables to private class
     this -> RHS = RHS_t;
 
@@ -143,10 +154,10 @@ void TriMatrix::matrixMultiplication (vector<double> &U, double ini_con_1, doubl
     double* U_temp;
 
     U_temp = new double[U.size()];
-
+    cout << 4<< endl;
     //calculating RHS of the equation (I-(1-theta)*nu*L)U^k
     //assigning values considering boundary condition
-    for (unsigned int i=0; i < U.size(); i++)
+    for (int i=0; i < U.size(); i++)
     {
         if (i==0)
         {
@@ -168,7 +179,7 @@ void TriMatrix::matrixMultiplication (vector<double> &U, double ini_con_1, doubl
     double zero = 0.0;
     int* Piv = new int[matSize];
     int info;
-
+    cout << 5<< endl;
     //performing RHS first to obtain Ax=b format
     F77NAME(dgemv)(&TRANS, &matSize, &matSize, &one, RHS, &matSize, U_temp, 1, &zero, U_temp, 1);
 
@@ -182,7 +193,7 @@ void TriMatrix::matrixMultiplication (vector<double> &U, double ini_con_1, doubl
     {
         U[i] = U_h[i];
     };
-
+    cout << 6<< endl;
 
 
 };

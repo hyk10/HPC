@@ -8,7 +8,7 @@ using namespace std;
 
 TriMatrix::TriMatrix(double nu, int mSize) //constructor
 {
-    //setting temporary storage for TriMatrix
+    //setting temporary storage for diagonal arrays
     double* upper;
     double* lower;
     double* diag;
@@ -19,7 +19,7 @@ TriMatrix::TriMatrix(double nu, int mSize) //constructor
     double d_nu= 2.0 * nu;
     double identity = 1.0;
 
-    //inputting values for matricies
+    //inputting values for diagonal matricies
     for (int i = 1; i < mSize-1; i++)
     {
         upper[i]= nu;
@@ -71,7 +71,7 @@ double& TriMatrix::operator()(unsigned int i, unsigned int j)
     }
     else
     {
-        ijthentry = 0;
+        ijthentry = 0.0;
     }
     return ijthentry;
 };
@@ -83,7 +83,7 @@ void TriMatrix::matrixMultiplication (vector<double> &U, double ini_con_1, doubl
     double* U_temp;
     U_temp = new double[U.size()];
 
-    //assigning values considering boundary condition
+    //calculating the next time step values considering boundary condition
     for (unsigned int i=0; i < U.size(); i++)
     {
         if (i==0)
@@ -103,7 +103,7 @@ void TriMatrix::matrixMultiplication (vector<double> &U, double ini_con_1, doubl
     //inputting final value to the private variable
     this -> U_h = U_temp;
 
-    //replacing current values with the processed values
+    //replacing current values with the calculated values
     for (unsigned int i=0; i < U.size(); i++)
     {
         U[i] = U_h[i];

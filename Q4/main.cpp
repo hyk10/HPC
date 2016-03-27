@@ -11,13 +11,14 @@ using namespace std;
 
 int main()
 {
-    double L;
-    int N_x;
-    double T;
-    double N_t;
-    double alpha;
-    double theta;
+    double L = 1.0;
+    int N_x = 20;
+    double T = 5.0;
+    double N_t = 5000.0 ;
+    double alpha = 1.0;
+    double theta = 0.5;
 
+/*
     cout << "Enter L value in double format(eg 1.0) :" << endl;
     cin >> L;
     cout << "Enter number of discretised domain in integer format (eg 20) :" << endl;
@@ -30,7 +31,7 @@ int main()
     cin >> alpha;
     cout << "Enter theta value(rad) in double format (eg 0.5):" << endl;
     cin >> theta;
-
+*/
     double gamma_0 = 0.0;
     double gamma_1 = 0.0;
     double refT = 0.0;

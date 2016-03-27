@@ -1,0 +1,63 @@
+# depslib dependency file v1.0
+1458892545 source:c:\users\hykim-dt\desktop\hpc\coursework\q1\q1\main.cpp
+	"TriMatrix.h"
+	<iostream>
+	<iomanip>
+	<cstring>
+	<vector>
+
+1458894101 
+
+1458892545 c:\users\hykim-dt\desktop\hpc\coursework\q1\q1\trimatrix.h
+	<vector>
+
+1458892545 source:c:\users\hykim-dt\desktop\hpc\coursework\q1\q1\trimatrix.cpp
+	<iostream>
+	<iomanip>
+	<cstring>
+	"TriMatrix.h"
+
+1458892545 .h"
+
+1458894101 source:c:\users\hykim-dt\desktop\hpc\coursework\q1\main.cpp
+	"TriMatrix.h"
+	<iostream>
+	<iomanip>
+	<cstring>
+	<vector>
+
+1458894101 c:\users\hykim-dt\desktop\hpc\coursework\q1\trimatrix.h
+	<vector>
+
+1458894515 source:/media/hyk10/7044725444721D52/HPC/Coursework/Q1/main.cpp
+	"TriMatrix.h"
+	<iostream>
+	<iomanip>
+	<cstring>
+	<vector>
+
+1458901940 /media/hyk10/7044725444721D52/HPC/Coursework/Q1/TriMatrix.h
+	<vector>
+
+1458894515 source:/media/hyk10/7044725444721D52/HPC/Coursework/Q1/TriMatrix.cpp
+	<iostream>
+	<iomanip>
+	<cstring>
+	"TriMatrix.h"
+
+1458992165 source:/home/hyk10/homedir/desktop/HPC/Coursework/Q1/main.cpp
+	"TriMatrix.h"
+	<iostream>
+	<iomanip>
+	<cstring>
+	<vector>
+
+1458901940 /home/hyk10/homedir/desktop/HPC/Coursework/Q1/TriMatrix.h
+	<vector>
+
+1458894515 source:/home/hyk10/homedir/desktop/HPC/Coursework/Q1/TriMatrix.cpp
+	<iostream>
+	<iomanip>
+	<cstring>
+	"TriMatrix.h"
+

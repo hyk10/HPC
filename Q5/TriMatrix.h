@@ -14,12 +14,14 @@ class TriMatrix
         void matrixMultiplication(std::vector<double> &U, double ini_con, int my_rank);
 
     private:
-        double* U_h0;
-        double* RHS0;
-        double* LHS0;
-        double* U_h1;
-        double* RHS1;
-        double* LHS1;
+        //first half, to be processed in processor 0
+        double* U_h0; //solution of the next time step
+        double* RHS0; // right hand side matrix
+        double* LHS0; // left hand side matrix
+        //second half, to be processed in processor 1
+        double* U_h1; //solution of the next time step
+        double* RHS1; // right hand side matrix
+        double* LHS1; // left hand side matrix
 
 };
 

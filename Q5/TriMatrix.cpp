@@ -17,6 +17,7 @@ extern "C" {
                 const int* lda, int* Piv, double* b, const int* ldb, int info);
     }
 
+//splitted TriMatrix function in Q4 for two processors
 TriMatrix::TriMatrix(double nu, double theta, int mSize, int my_rank) //constructor
 {
     double d_nu= 2.0 * nu;
@@ -25,7 +26,7 @@ TriMatrix::TriMatrix(double nu, double theta, int mSize, int my_rank) //construc
     int info;
 
     // constructing the half matricies for each processor
-    if (my_rank == 0)
+    if (my_rank == 0) //for processor 0
     {
         double* upper0;
         double* lower0;
@@ -55,7 +56,7 @@ TriMatrix::TriMatrix(double nu, double theta, int mSize, int my_rank) //construc
         }
 
         diag0[0] = identity;
-
+        //constructing full matrix in order to use LAPACK and BLAS
         for (int i=0; i<mSize*mSize; i++)
         {
             if (i%mSize == 0)
@@ -76,7 +77,7 @@ TriMatrix::TriMatrix(double nu, double theta, int mSize, int my_rank) //construc
             }
         };
 
-        //pre LU decomposition
+        //pre LU decomposition using LAPACK
         F77NAME(dgetrf)(&mSize, &mSize, LHS_t0, &mSize, Piv, info);
 
         //setting variables to private class
@@ -102,7 +103,7 @@ TriMatrix::TriMatrix(double nu, double theta, int mSize, int my_rank) //construc
         }
 
         diag0[0] = identity;
-
+        //constructing full matrix in order to use LAPACK and BLAS
         for (int i=0; i<mSize*mSize; i++)
         {
             if (i%mSize == 0)
@@ -126,7 +127,7 @@ TriMatrix::TriMatrix(double nu, double theta, int mSize, int my_rank) //construc
         //setting variables to private class
         this -> RHS0 = RHS_t0;
     }
-    else
+    else //for processor 1, same steps as above
     {
         double* upper1;
         double* lower1;
@@ -177,7 +178,7 @@ TriMatrix::TriMatrix(double nu, double theta, int mSize, int my_rank) //construc
             }
         };
 
-        //pre LU decomposition
+        //pre LU decomposition using LAPACK
         F77NAME(dgetrf)(&mSize, &mSize, LHS_t1, &mSize, Piv, info);
 
         //setting variables to private class
@@ -203,7 +204,7 @@ TriMatrix::TriMatrix(double nu, double theta, int mSize, int my_rank) //construc
         }
 
         diag1[0] = identity;
-
+        //constructing full matrix in order to use LAPACK and BLAS
         for (int i=0; i<mSize*mSize; i++)
         {
             if (i%mSize == 0)
@@ -239,7 +240,7 @@ TriMatrix::~TriMatrix() //destructor of TriMatrix
     delete[] LHS1;
 }
 
-//matrix multiplication function
+//matrix multiplication function for two processors
 void TriMatrix::matrixMultiplication (vector<double> &U, double ini_con, int my_rank)
 {
     int matSize = U.size();
@@ -249,7 +250,7 @@ void TriMatrix::matrixMultiplication (vector<double> &U, double ini_con, int my_
     int* Piv = new int[matSize];
     int info;
 
-    if (my_rank==0)
+    if (my_rank==0) //processor 0
     {
         //temporary storage for the solution
         double* U_temp0;
@@ -270,10 +271,10 @@ void TriMatrix::matrixMultiplication (vector<double> &U, double ini_con, int my_
             };
         };
 
-        //performing RHS first to obtain Ax=b format
+        //performing RHS(Bb) first to obtain Ax=b format from Ax=Bb format
         F77NAME(dgemv)(&TRANS, &matSize, &matSize, &one, RHS0, &matSize, U_temp0, 1, &zero, U_temp0, 1);
 
-        //then solving equation in Ax=b format
+        //then solving x, equation in Ax=b format
         F77NAME(dgetrs)(&TRANS, &matSize, LHS0, &matSize, Piv, U_temp0, &matSize, info);
 
         this -> U_h0 = U_temp0;
@@ -284,7 +285,7 @@ void TriMatrix::matrixMultiplication (vector<double> &U, double ini_con, int my_
             U[i] = U_h0[i];
         };
     }
-    else
+    else //processor 1
     {
         //temporary storage for the solution
         double* U_temp1;
@@ -305,11 +306,11 @@ void TriMatrix::matrixMultiplication (vector<double> &U, double ini_con, int my_
             };
         };
 
-        //performing RHS first to obtain Ax=b format
-        F77NAME(dgemv)(&TRANS, &matSize, &matSize, &one, RHS1, &matSize, U_temp1, 1, &zero, U_temp1, 1);
+        //performing RHS(Bb) first to obtain Ax=b format from Ax=Bb format
+        F77NAME(dgemv)(&TRANS, &matSize, &matSize, &one, RHS0, &matSize, U_temp1, 1, &zero, U_temp1, 1);
 
-        //then solving equation in Ax=b format
-        F77NAME(dgetrs)(&TRANS, &matSize, LHS1, &matSize, Piv, U_temp1, &matSize, info);
+        //then solving x, equation in Ax=b format
+        F77NAME(dgetrs)(&TRANS, &matSize, LHS0, &matSize, Piv, U_temp1, &matSize, info);
 
         this -> U_h1 = U_temp1;
 

@@ -37,7 +37,7 @@ TriMatrix::TriMatrix(double nu, double theta, int mSize) //constructor
     double identity = 1.0;
 
     //constructing LHS trimatix
-    //inputting values for matricies
+    //inputting values for diagonal matricies
     for (int i = 1; i < mSize-1; i++)
     {
         upper[i]= -theta * nu;
@@ -55,6 +55,7 @@ TriMatrix::TriMatrix(double nu, double theta, int mSize) //constructor
     diag[0] = identity;
     diag[mSize-1] = identity;
 
+    //constructing full matrix in order to use LAPACK and BLAS
     for (int i=0; i<mSize*mSize; i++)
     {
         if (i%mSize == 0)
@@ -75,21 +76,12 @@ TriMatrix::TriMatrix(double nu, double theta, int mSize) //constructor
         }
     };
 
-    //pre LU decomposition
+    //pre LU decomposition using LAPACK
     int* Piv = new int[mSize];
     int info;
-/*
-    void F77NAME(dgetrf)(const int* M, const int* N, double* A,
-                const int* lda, int* Piv, int info);
-*/
-    const int* mSize_t = &mSize;
-    cout << mSize << endl;
-    cout << LHS_t << endl;
-    cout << Piv << endl;
-    cout << info << endl;
 
-    F77NAME(dgetrf)(mSize_t, mSize_t, LHS_t, mSize_t, Piv, info);
-    cout << 1<< endl;
+    F77NAME(dgetrf)(&mSize, &mSize, LHS_t, &mSize, Piv, info);
+
     //setting variables to private class
     this -> LHS = LHS_t;
 
@@ -107,7 +99,7 @@ TriMatrix::TriMatrix(double nu, double theta, int mSize) //constructor
 
     upper[0]=0;
     lower[mSize-1] =0;
-    cout << 2<< endl;
+
     for (int i = 1; i < (mSize-1); i++)
     {
         diag[i] = identity - (1 - theta) * d_nu;
@@ -115,7 +107,7 @@ TriMatrix::TriMatrix(double nu, double theta, int mSize) //constructor
 
     diag[0] = identity;
     diag[mSize-1] = identity;
-
+    //constructing full matrix in order to use LAPACK and BLAS
     for (int i=0; i<mSize*mSize; i++)
     {
         if (i%mSize == 0)
@@ -135,7 +127,7 @@ TriMatrix::TriMatrix(double nu, double theta, int mSize) //constructor
             RHS_t[i]=0;
         }
     }
-    cout << 3<< endl;
+
     //setting variables to private class
     this -> RHS = RHS_t;
 
@@ -154,7 +146,7 @@ void TriMatrix::matrixMultiplication (vector<double> &U, double ini_con_1, doubl
     double* U_temp;
 
     U_temp = new double[U.size()];
-    cout << 4<< endl;
+
     //calculating RHS of the equation (I-(1-theta)*nu*L)U^k
     //assigning values considering boundary condition
     for (int i=0; i < U.size(); i++)
@@ -173,27 +165,25 @@ void TriMatrix::matrixMultiplication (vector<double> &U, double ini_con_1, doubl
         };
     };
 
+    //USING BLAS
     int matSize = sizeof(U_temp);
     char TRANS = 'N';
     double one = 1.0;
     double zero = 0.0;
     int* Piv = new int[matSize];
     int info;
-    cout << 5<< endl;
-    //performing RHS first to obtain Ax=b format
+
+    //performing RHS(Bb) first to obtain Ax=b format from Ax=Bb format
     F77NAME(dgemv)(&TRANS, &matSize, &matSize, &one, RHS, &matSize, U_temp, 1, &zero, U_temp, 1);
 
-    //then solving equation in Ax=b format
+    //then solving x, equation in Ax=b format
     F77NAME(dgetrs)(&TRANS, &matSize, LHS, &matSize, Piv, U_temp, &matSize, info);
 
     this -> U_h = U_temp;
 
-    //replacing current values with the processed values
+    //replacing current values with the processed values using BLAS
     for (unsigned int i=0; i < U.size(); i++)
     {
         U[i] = U_h[i];
     };
-    cout << 6<< endl;
-
-
 };

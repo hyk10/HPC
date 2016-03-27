@@ -11,14 +11,14 @@ using namespace std;
 
 int main()
 {
-    double L = 1.0;
-    int N_x = 20;
-    double T = 5.0;
-    double N_t = 5000.0 ;
-    double alpha = 1.0;
-    double theta = 0.5;
+    double L;
+    int N_x;
+    double T;
+    double N_t;
+    double alpha;
+    double theta;
 
-/*
+    //taking arguments through terminal
     cout << "Enter L value in double format(eg 1.0) :" << endl;
     cin >> L;
     cout << "Enter number of discretised domain in integer format (eg 20) :" << endl;
@@ -31,10 +31,15 @@ int main()
     cin >> alpha;
     cout << "Enter theta value(rad) in double format (eg 0.5):" << endl;
     cin >> theta;
-*/
+
+    //boundary condition
     double gamma_0 = 0.0;
     double gamma_1 = 0.0;
+
+    //setting initial time to 0
     double refT = 0.0;
+
+    //empty vector for
     vector<double> vU_heat(N_x+1);
     double d_x=L/N_x;
     double d_t=T/N_t;
@@ -55,7 +60,12 @@ int main()
     {
         IpnuL.matrixMultiplication(vU_heat, gamma_0, gamma_1);
         refT+= d_t;
-            cout << refT << endl;
+    };
+
+    //showing final values through terminal
+    for (unsigned int i = 0; i < vU_heat.size(); i++)
+    {
+        cout << vU_heat[i] << endl;
     };
 
 };

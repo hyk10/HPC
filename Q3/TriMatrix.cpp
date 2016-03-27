@@ -151,21 +151,16 @@ void TriMatrix::matrixMultiplication (vector<double> &U, double ini_con_1, doubl
     };
 
 
-    // performing back substitution
+    //performing back substitution
+    //the bottom value
     U_temp[U.size()-1] = U_temp[U.size()-1]/diag[U.size()-1];
-
-
+    //the rest
     for (int i=U.size()-2; i >= 0; i--)
     {
-
         U_temp[i]=(U_temp[i]-upper[i]*U_temp[i+1])/diag[i];
-
     };
 
-
-
-
-        this -> U_h = U_temp;
+    this -> U_h = U_temp;
 
     //replacing current values with the processed values
     for (unsigned int i=0; i < U.size(); i++)

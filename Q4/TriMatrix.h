@@ -14,9 +14,9 @@ class TriMatrix
         void matrixMultiplication(std::vector<double> &U, double ini_con_1, double ini_con_2);
 
     private:
-        double* U_h;
-        double* RHS;
-        double* LHS;
+        double* U_h; //solution of the next time step
+        double* RHS; // right hand side matrix
+        double* LHS; // left hand side matrix
 
 };
 

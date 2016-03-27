@@ -1,0 +1,35 @@
+hyk10@aero-vm:~/homedir/desktop/HPC/Coursework/Q5$ mpicxx main.cpp TriMatrix.cpp TriMatrix.h -llapack -lblas -o a
+hyk10@aero-vm:~/homedir/desktop/HPC/Coursework/Q5$ mpirun -np 2 ./a
+Enter L value in double format(eg 1.0) :
+1.0
+Enter even number of discretised domain in integer format (eg 20) :
+20
+Enter target time T in double format (eg 5.0) :
+5.0
+Enter number of time step in double format (eg 5000.0) :
+5000.0
+Enter alpha value in double format (eg 1.0):
+1.0
+Enter theta value(rad) in double format (eg 0.5):
+0.5
+[aero-vm:14481] *** Process received signal ***
+[aero-vm:14481] Signal: Segmentation fault (11)
+[aero-vm:14481] Signal code: Address not mapped (1)
+[aero-vm:14481] Failing at address: (nil)
+[aero-vm:14482] *** Process received signal ***
+[aero-vm:14482] Signal: Segmentation fault (11)
+[aero-vm:14482] Signal code: Address not mapped (1)
+[aero-vm:14482] Failing at address: 0x58
+[aero-vm:14481] [ 0] /lib/x86_64-linux-gnu/libc.so.6(+0x36d40) [0x7f7604c86d40]
+[aero-vm:14481] [ 1] ./a() [0x409037]
+[aero-vm:14481] [ 2] /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0xf5) [0x7f7604c71ec5]
+[aero-vm:14481] [ 3] ./a() [0x408a89]
+[aero-vm:14481] *** End of error message ***
+[aero-vm:14482] [ 0] /lib/x86_64-linux-gnu/libc.so.6(+0x36d40) [0x7f7bdac5dd40]
+[aero-vm:14482] [ 1] ./a() [0x4092da]
+[aero-vm:14482] [ 2] /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0xf5) [0x7f7bdac48ec5]
+[aero-vm:14482] [ 3] ./a() [0x408a89]
+[aero-vm:14482] *** End of error message ***
+--------------------------------------------------------------------------
+mpirun noticed that process rank 0 with PID 14481 on node aero-vm exited on signal 11 (Segmentation fault).
+--------------------------------------------------------------------------

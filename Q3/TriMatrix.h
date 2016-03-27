@@ -16,16 +16,14 @@ class TriMatrix
         //function which operates matrix multiplication
         void matrixMultiplication(std::vector<double> &U, double ini_con_1, double ini_con_2);
 
-
-
     private:
-        double* mDiag_lhs;//mSize]; // diagonal value
-        double* mUpper_lhs;//mSize-1]; // upper value
-        double* mLower_lhs;//mSize-1]; // lower value
-        double* mDiag;//mSize]; // diagonal value
-        double* mUpper;//mSize-1]; // upper value
-        double* mLower;//mSize-1]; // lower value
-        double* U_h;
+        double* mDiag_lhs; // diagonal value of LHS matrix
+        double* mUpper_lhs; // upper value of LHS matrix
+        double* mLower_lhs; //lower value of LHS matrix
+        double* mDiag; //diagonal value of RHS matrix
+        double* mUpper; //upper value of RHS matrix
+        double* mLower; //lower value of RHS matrix
+        double* U_h; //solution of the next time step
 
 };
 

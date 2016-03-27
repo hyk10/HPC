@@ -8,8 +8,6 @@
 
 using namespace std;
 
-
-
 int main()
 {
     double L;
@@ -19,6 +17,7 @@ int main()
     double alpha;
     double theta;
 
+    //taking arguments through terminal
     cout << "Enter L value in double format(eg 1.0) :" << endl;
     cin >> L;
     cout << "Enter number of discretised domain in integer format (eg 20) :" << endl;
@@ -32,9 +31,14 @@ int main()
     cout << "Enter theta value(rad) in double format (eg 0.5):" << endl;
     cin >> theta;
 
+    //boundary condition
     double gamma_0 = 0.0;
     double gamma_1 = 0.0;
+
+    //setting initial time to 0
     double refT = 0.0;
+
+    //empty vector for
     vector<double> vU_heat(N_x+1);
     double d_x=L/N_x;
     double d_t=T/N_t;
@@ -66,10 +70,12 @@ int main()
     for (unsigned int i = 0; i < vU_heat.size(); i++)
     {
         deviation += (vU_heat[i]-sin(pi*i*d_x/L)*exp(-alpha*pi*pi*refT/(L*L)))*(vU_heat[i]-sin(pi*i*d_x/L)*exp(-alpha*pi*pi*refT/(L*L)));
+        //showing final values through terminal
+        cout << vU_heat[i]+ << endl;
     };
 
     rmse = sqrt(deviation/(N_x+1));
-    cout << rmse << endl;
+
 
     // for plotting
     ofstream vOut1("dtdx.txt");
